@@ -14,7 +14,7 @@ $error = array();
 $_SESSION['success'] = ""; 
 
 // connect to the database
-$db = mysqli_connect('localhost:3306', 'root', '', 'police');
+$db = mysqli_connect('localhost:3306', 'root', 'joey@161826', 'police');
 
 // REGISTER USER
 
