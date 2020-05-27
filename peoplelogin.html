@@ -1,80 +1,117 @@
 <html>
+
 <head>
-  <meta name="google-signin-client_id" content="911058791449-8uuk5t9l3r89r64d74ruehp8mb9modi8.apps.googleusercontent.com">
-  <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@0;1&family=Oswald:wght@700&display=swap"
-    rel="stylesheet">
-  <style>
-      body {
-        /* CSS reset */
-        margin: 0px;
-        padding: 0px;
-        background-image: url("sid.jpg");
-        background-size: cover;
-    }
-
-    /* TAG LINE */
-    #tag_line {
-        color: whitesmoke;
-        font-size: 60px;
-        float:center;
-        margin: 112px 0px 0px 46px;
-        font-family: 'Oswald', sans-serif;
-        text-shadow: whitesmoke;
-    }
-    .container {
-        border: 2px solid black;
-    margin: 41px 118px;
-    padding: 23px 106px 23px 23px;
-    width: 20%;
-    border-radius: 15px;
-    background-color: black;
-    color: white;
-    font-family: 'Balsamiq Sans', cursive;
-    }
-
-.logo img {
-            width: 25%;
-            margin:-30px 121px;
-            padding:28px 23px;
+    <meta name="google-signin-client_id" content="230360238026-gjo0p08cjdfsuem9j962npmkfc66mu97.apps.googleusercontent.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            /* CSS reset */
+            margin: 0px;
+            padding: 0px;
+            background-image: url("sid.jpg");
+            background-size: cover;
         }
-
-#head {
-        font-size: xx-large;
-        font-family: 'Oswald', sans-serif;
-    }
-  </style>
+        /* TAG LINE */
+        
+        #tag_line {
+            color: whitesmoke;
+            font-size: 58px;
+            margin: 112px 0px 0px 46px;
+            font-family: 'Oswald', sans-serif;
+            text-shadow: whitesmoke;
+        }
+        
+        #tag {
+            color: whitesmoke;
+            font-size: 48px;
+            margin: 32px 0px 0px 46px;
+            font-family: 'Oswald', sans-serif;
+            text-shadow: whitesmoke;
+        }
+        
+        .container {
+            border: 2px solid black;
+            margin: 40px 40px;
+            text-align: center;
+            width: 240px;
+            border-radius: 15px;
+            color: white;
+            font-family: 'Balsamiq Sans', cursive;
+        }
+    </style>
 </head>
+
 <body>
     <p id="tag_line">WELCOME TO RAKSHASUTRA</p>
+    <h3 id="tag">GET STARTED</h3>
     <div class="container">
-    <div class="logo">
-    <img src="logo.jpeg">
-        <h2 id="head"><a href="design1.html" class="text-black">GOOGLE SIGN IN</a></h2>
+
+
+        <div id="my-signin2"></div>
+        <script>
+            // const fs = require('fs');
+
+            // Write data in 'Output.txt' . 
+
+
+            function onSuccess(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                // console.log('Logged in as: ' + typeof(profile.getName()));
+                // console.log('ID: ' + typeof(profile.getId()));
+                // console.log('Full Name: ' + typeof(profile.getName()));
+                // console.log('Image URL: ' + typeof(profile.getImageUrl()));
+                // console.log('Email: ' + typeof(profile.getEmail()));
+
+                var b = profile.getId();
+                var c = profile.getName();
+                var d = profile.getImageUrl();
+                var e = profile.getEmail();
+
+                var data = {
+                    id: b,
+                    name: c,
+                    url: d,
+                    email: e,
+                }
+
+                console.log(data['id']);
+
+                $.post("test.php", data,
+                    function(response) {
+                        console.log(response);
+                    }
+                );
+
+                // console.log(data);
+                setTimeout(changePage, 2000);
+
+
+
+            }
+
+            function changePage() {
+                window.location.href = "./test.php";
+            }
+
+            function onFailure(error) {
+                console.log(error);
+            }
+
+            function renderButton() {
+                gapi.signin2.render('my-signin2', {
+                    'scope': 'profile email',
+                    'width': 240,
+                    'height': 50,
+                    'longtitle': true,
+                    'theme': 'dark',
+                    'onsuccess': onSuccess,
+                    'onfailure': onFailure
+                });
+            }
+        </script>
+
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     </div>
-   
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-      window.location.href="design1.html";
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-</div>
 </body>
+
 </html>

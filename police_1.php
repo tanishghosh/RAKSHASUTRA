@@ -22,7 +22,7 @@
       {
           
          $error = "Your Login ID or Password is invalid";
-         echo '<script>alert("Your Login ID or Password is invalid")</script>';
+         echo '<script>alert("Your Login ID or Password is invalid");window.location.href="policelogin.html";</script>';
       }
    }
 ?>

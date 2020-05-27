@@ -16,7 +16,7 @@ $error = array();
 $_SESSION['success'] = ""; 
 
 // connect to the database
-$db = mysqli_connect('localhost:3306', 'root', 'joey@161826', 'police');
+$db = mysqli_connect('localhost:3306', 'root', '', 'police');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -63,7 +63,7 @@ if (isset($_POST['reg_user'])) {
 
     {
       $err = "You are logged out";
-      echo '<script>alert("You are not registered")</script>';
+      echo '<script>alert("You are not registered");window.location.href="policelogin.html"</script>';
     }
   }
 

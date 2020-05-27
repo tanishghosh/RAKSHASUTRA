@@ -24,7 +24,6 @@ function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: pos,
                 zoom: 15,
-                
             });
 
             var marker = new google.maps.Marker({

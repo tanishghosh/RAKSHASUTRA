@@ -135,7 +135,7 @@ form, .content {
        
        <div class="input-group">
          <select name="gender" placeholder="Gender" id="gender">
-                <option > Select </option>
+                <option > Gender </option>
                  <option value="#">Male</option>
                  <option value="#">Female</option>
                 <option value="#" >Other</option>
